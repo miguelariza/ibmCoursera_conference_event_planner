@@ -129,3 +129,556 @@
 .budget_sentence {
   font-size: 29px;
 }
+
+/* New css design */
+
+/* ============================================
+   AGORA CONVENTION CENTER - ALTERNATE VERSION
+   TWO COLUMN HERO LAYOUT - DEBUGGED
+   MARRIOTT INSPIRED STYLING
+   ============================================ */
+
+   :root {
+    /* Primary Brand Colors */
+    --marriott-red: #B41F3A;
+    --brilliant-red: #E4002B;
+    
+    /* Core Neutral Palette */
+    --linen: #F5F5F0;
+    --linen-dark: #E8E8E3;
+    --husk: #D9C4B0;
+    --slate: #545658;
+    --chalkboard: #25282A;
+    --obsidian: #131B23;
+    --white: #FFFFFF;
+    
+    /* Typography */
+    --font-primary: 'Effra', 'Arial', sans-serif;
+    --font-medium: 'Effra Medium', 'Arial Bold', sans-serif;
+    
+    /* Spacing Scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-xxl: 6rem;
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--chalkboard);
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid var(--linen-dark);
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-sm) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-family: var(--font-medium);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--marriott-red);
+    letter-spacing: 0.125em;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--space-lg);
+}
+
+nav a {
+    font-family: var(--font-medium);
+    font-size: 0.875rem;
+    color: var(--slate);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    padding: var(--space-xs) 0;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--brilliant-red);
+    transition: var(--transition-smooth);
+}
+
+nav a:hover {
+    color: var(--chalkboard);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   MAIN & HERO SECTION
+   ============================================ */
+
+main {
+    margin-top: 80px; /* Account for fixed header */
+}
+
+/* Hero Section - Full Height with Background Image */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background: url('convention-center-interior.jpg') center center / cover no-repeat fixed;
+    display: flex; /* Key: Make hero a flex container */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+/* Dark overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(19, 27, 35, 0.9) 0%,
+        rgba(19, 27, 35, 0.8) 50%,
+        rgba(19, 27, 35, 0.9) 100%
+    );
+    z-index: 1;
+}
+
+/* ============================================
+   TWO COLUMN FLEXBOX CONTAINER
+   ============================================ */
+
+.hero-container {
+    position: relative;
+    z-index: 2; /* Above overlay */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+    
+    /* FLEXBOX LAYOUT - KEY PROPERTIES */
+    display: flex;
+    flex-direction: row; /* Side by side */
+    flex-wrap: nowrap; /* Don't wrap on desktop */
+    align-items: center; /* Vertically center columns */
+    justify-content: space-between; /* Space between columns */
+    gap: var(--space-xxl); /* Gap between columns */
+}
+
+/* ============================================
+   LEFT COLUMN: HEADING, TAGLINE, CTA
+   ============================================ */
+
+.hero-left {
+    /* Flex properties */
+    flex: 1 1 50%; /* Grow, shrink, basis 50% */
+    max-width: 600px;
+    
+    /* Internal layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Left align content */
+    justify-content: center;
+}
+
+.hero-left h2 {
+    font-family: var(--font-primary);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: var(--space-md);
+    position: relative;
+    padding-top: var(--space-md);
+}
+
+/* Anchor Bar */
+.hero-left h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--brilliant-red);
+}
+
+.tagline {
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--linen);
+    margin-bottom: var(--space-xl);
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* ============================================
+   CTA BUTTON
+   ============================================ */
+
+.cta-button {
+    display: inline-block;
+    font-family: var(--font-medium);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    color: var(--white);
+    background: var(--brilliant-red);
+    padding: var(--space-md) var(--space-xl);
+    text-decoration: none;
+    border: 2px solid var(--brilliant-red);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    transition: var(--transition-smooth);
+    z-index: -1;
+}
+
+.cta-button:hover {
+    color: var(--brilliant-red);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(180, 31, 58, 0.3);
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+/* ============================================
+   RIGHT COLUMN: ABOUT CONTENT
+   ============================================ */
+
+.hero-right {
+    /* Flex properties */
+    flex: 1 1 50%; /* Grow, shrink, basis 50% */
+    max-width: 600px;
+    
+    /* Internal layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-about {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: var(--space-xl);
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.hero-about p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--slate);
+    margin-bottom: var(--space-md);
+}
+
+.hero-about p:last-child {
+    margin-bottom: 0;
+}
+
+/* Drop cap for first paragraph */
+.hero-about p:first-child::first-letter {
+    font-family: var(--font-medium);
+    font-size: 3rem;
+    float: left;
+    line-height: 1;
+    padding-right: var(--space-sm);
+    color: var(--marriott-red);
+    margin-top: -0.25rem;
+}
+
+/* ============================================
+   SERVICES SECTION
+   ============================================ */
+
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-xxl) var(--space-lg);
+}
+
+#services {
+    background: var(--white);
+}
+
+section h2 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    color: var(--chalkboard);
+    margin-bottom: var(--space-xl);
+    position: relative;
+    padding-top: var(--space-md);
+    text-align: center;
+}
+
+section h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--brilliant-red);
+}
+
+#services ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    list-style: none;
+    margin-top: var(--space-lg);
+}
+
+#services li {
+    padding: var(--space-lg);
+    background: var(--linen);
+    border-left: 3px solid var(--husk);
+    transition: var(--transition-smooth);
+    text-align: center;
+}
+
+#services li:hover {
+    border-left-color: var(--brilliant-red);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#services h3 {
+    font-family: var(--font-medium);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    color: var(--chalkboard);
+    margin-bottom: var(--space-sm);
+}
+
+#services p {
+    font-size: 1rem;
+    color: var(--slate);
+    line-height: 1.6;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    background: var(--chalkboard);
+    color: var(--linen);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+    color: var(--husk);
+}
+
+footer address {
+    font-style: normal;
+    font-size: 0.875rem;
+    color: var(--slate);
+}
+
+footer a {
+    color: var(--linen);
+    text-decoration: none;
+    border-bottom: 1px solid var(--slate);
+    transition: var(--transition-smooth);
+}
+
+footer a:hover {
+    color: var(--brilliant-red);
+    border-bottom-color: var(--brilliant-red);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE BREAKPOINTS
+   ============================================ */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+    .hero-container {
+        gap: var(--space-xl);
+        padding: var(--space-lg);
+    }
+    
+    .hero-left h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-about {
+        padding: var(--space-lg);
+    }
+}
+
+/* Mobile breakpoint - Stack columns */
+@media (max-width: 768px) {
+    header {
+        position: relative; /* Remove fixed on mobile */
+    }
+    
+    main {
+        margin-top: 0;
+    }
+    
+    nav {
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding: var(--space-sm);
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: var(--space-xl) 0;
+    }
+    
+    /* Stack columns vertically */
+    .hero-container {
+        flex-direction: column; /* Stack vertically */
+        flex-wrap: wrap;
+        gap: var(--space-xl);
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .hero-left,
+    .hero-right {
+        flex: 1 1 100%; /* Full width on mobile */
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .hero-left {
+        align-items: center; /* Center on mobile */
+        text-align: center;
+    }
+    
+    .hero-left h2 {
+        font-size: 1.75rem;
+    }
+    
+    .hero-left h2::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .tagline {
+        text-align: center;
+        font-size: 1.125rem;
+    }
+    
+    .hero-about {
+        padding: var(--space-lg);
+    }
+    
+    section {
+        padding: var(--space-xl) var(--space-md);
+    }
+    
+    #services ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --marriott-red: #990000;
+        --slate: #000000;
+    }
+    
+    .hero-about {
+        background: var(--white);
+        border: 2px solid var(--chalkboard);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero {
+        background-attachment: scroll;
+    }
+}
